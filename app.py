@@ -1,11 +1,3 @@
-"""
-🎧 Deepfake Audio Detector — FastAPI Server
-Author: Victor 😎
-Description:
-Upload an audio file via HTTP request and detect whether it's a
-human or AI-generated voice using a pre-trained CNN model.
-"""
-
 import io
 import numpy as np
 import librosa
@@ -109,7 +101,7 @@ async def predict_audio(file: UploadFile = File(...)):
 # ------------------------------------------------------------
 # Root endpoint
 # ------------------------------------------------------------
-@app.get("/")
+@app.get("/health")
 def root():
     return {"message": "🎧 Deepfake Audio Detector API is running!"}
 
@@ -120,4 +112,4 @@ def root():
 if __name__ == "__main__":
     import uvicorn
     print("🚀 Starting API server...")
-    uvicorn.run(app, host="0.0.0.0", port=3001)
+    uvicorn.run(app, host="0.0.0.0", port=9999)
