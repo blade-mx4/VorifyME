@@ -3,3 +3,4 @@ uvicorn
 tensorflow-cpu==2.20
 librosa
 numpy
+python-multipart
