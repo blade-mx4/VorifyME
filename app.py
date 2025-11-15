@@ -60,7 +60,7 @@ def audio_to_spectrogram(file_bytes: bytes):
 # ------------------------------------------------------------
 # API route for predictions
 # ------------------------------------------------------------
-@app.post("/audio/")
+@app.post("/audio")
 async def predict_audio(file: UploadFile = File(...)):
     if model is None:
         return JSONResponse(status_code=500, content={"error": "Model not loaded on server."})
