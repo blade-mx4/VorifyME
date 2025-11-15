@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
 from tensorflow.keras.models import load_model
+from pydub import AudioSegment
 
 # ------------------------------------------------------------
 # Initialize FastAPI app
@@ -40,7 +41,14 @@ model = load_model("Model.keras")
 def audio_to_spectrogram(file_bytes: bytes):
     try:
         # Load the audio file into memory
-        y, sr = librosa.load(io.BytesIO(file_bytes), sr=None)
+        audio = AudioSegment.from_file(io.BytesIO(file_bytes), format="webm")
+        
+        # Export to WAV in memory
+        wav_io = io.BytesIO()
+        audio.export(wav_io, format="wav")
+        wav_io.seek(0)
+        
+        y, sr = librosa.load(wav_io, sr=None)
         
         # Generate Mel spectrogram
         S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
