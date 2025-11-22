@@ -97,19 +97,19 @@ def predict_audio(file: UploadFile = File(...)):
         
         # Run prediction
         pred = model.predict(spectrogram)[0][0]
-        
+        print("F✅ Prediction successful.")
         # Interpret result
         if pred < 0.5:
             label = "HUMAN"
             confidence = (1 - pred) * 100
         else:
-            label = "AI-GENERATED"
+            label = "AI"
             confidence = pred * 100
-        
-        return {
+        print("Classification:", label, f"({confidence:.2f}%)")
+        return JSONResponse(content={
             "classification": label,
             #"confidence": round(float(confidence), 2)
-        }
+        })
 
     except Exception as e:
         print(f"❌ Prediction error: {e}")
