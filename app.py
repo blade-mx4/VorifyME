@@ -67,6 +67,10 @@ def audio_to_spectrogram(file_bytes: bytes):
 # ------------------------------------------------------------
 # API route for predictions
 # ------------------------------------------------------------
+@app.post("/health")
+def health():
+    return {"message": "🎧 VoifyMELIVE API is online and running!"}
+
 @app.post("/audio")
 def predict_audio(file: UploadFile = File(...)):
     if model is None:
