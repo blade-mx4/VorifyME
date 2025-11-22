@@ -2,7 +2,7 @@ import io
 import numpy as np
 import librosa
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from pydub import AudioSegment
@@ -67,9 +67,9 @@ def audio_to_spectrogram(file_bytes: bytes):
 # ------------------------------------------------------------
 # API route for predictions
 # ------------------------------------------------------------
-@app.post("/health")
+@app.head("/health")
 def health():
-    return {"message": "🎧 VoifyMELIVE API is online and running!"}
+    return Response(status_code=200)
 
 @app.post("/audio")
 def predict_audio(file: UploadFile = File(...)):
