@@ -4,7 +4,6 @@ import librosa
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 from pydub import AudioSegment
 
