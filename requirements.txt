@@ -1,7 +1,7 @@
 fastapi
 uvicorn
-tensorflow-cpu==2.20
-librosa
-numpy
 python-multipart
+numpy
+librosa
 pydub
+tflite-runtime
