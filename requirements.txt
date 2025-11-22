@@ -4,4 +4,4 @@ python-multipart
 numpy
 librosa
 pydub
-https://github.com/feranick/TFLite-builds/releases/download/v2.14.0/tflite_runtime-2.14.0-cp39-cp39-linux_x86_64.whl
+https://github.com/feranick/TFlite-builds/releases/download/v2.17.1/tflite_runtime-2.17.1-cp310-cp310-linux_x86_64.whl
