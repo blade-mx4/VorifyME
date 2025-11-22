@@ -67,6 +67,13 @@ def audio_to_spectrogram(file_bytes: bytes):
 # ------------------------------------------------------------
 # API route for predictions
 # ------------------------------------------------------------
+# Add this near your other endpoints
+@app.get("/")
+def home():
+    return {"message": "Server is running"}  
+@app.head("/")
+def home():
+    return Response(status_code=200 )   
 @app.head("/health")
 def health():
     return Response(status_code=200)
