@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 python-multipart
-numpy
+numpy<2.0.0
 librosa
 pydub
 tflite-runtime==2.14.0
