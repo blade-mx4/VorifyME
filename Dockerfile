@@ -4,10 +4,7 @@ FROM python:3.10-slim
 # Set the working directory
 WORKDIR /app
 
-# ------------------------------------------------
-# INSTALL SYSTEM DEPENDENCIES (The Fix)
-# We install ffmpeg (for pydub) and libsndfile (for librosa)
-# ------------------------------------------------
+# Install system dependencies (FFMPEG is required for pydub)
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     libsndfile1 \
@@ -20,6 +17,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your code
 COPY . .
 
-# Start the server (This fixes the 'import string' error)
-# ASSUMPTION: Your python file is named 'main.py'
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Start the server
+# "app:app" means: look in 'app.py' for the 'app' object
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "10000"]
