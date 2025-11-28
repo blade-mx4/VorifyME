@@ -35,7 +35,7 @@ print("🔁 Loading model...")
 
 try:
     # Load the TFLite model instead of the heavy Keras model
-    interpreter = tflite.Interpreter(model_path="model.tflite")
+    interpreter = tflite.Interpreter(model_path="model_v1.tflite")
     interpreter.allocate_tensors()
 
     # Get input and output details to use during prediction
